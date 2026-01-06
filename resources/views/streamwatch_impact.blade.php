@@ -19,14 +19,37 @@
     <nav class="bg-gray-800 border-b border-gray-700 p-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div
+                    class="w-3 h-3 bg-red-500 rounded-full {{ request()->routeIs('dashboard') ? 'animate-pulse' : '' }}">
+                </div>
                 <h1 class="text-xl font-bold tracking-tighter">Stream<span class="text-red-500">Watch</span></h1>
             </div>
-            <div class="space-x-6 text-sm font-medium text-gray-400">
-                <a href="{{ route('dashboard') }}" class="hover:text-white transition">Monitoring Live</a>
-                <a href="{{ route('timeline') }}" class="hover:text-white transition">Arsip Sensor</a>
-                <a href="{{ route('factcheck') }}" class="hover:text-white transition">Cek Fakta</a>
-                <a href="{{ route('dampak') }}" class="text-red-400 border-b-2 border-red-500 pb-1">Dampak Sosial</a>
+
+            <div class="space-x-6 text-sm font-medium hidden md:block">
+                <a href="{{ route('dashboard') }}"
+                    class="{{ request()->routeIs('dashboard') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Monitoring Live
+                </a>
+
+                <a href="{{ route('timeline') }}"
+                    class="{{ request()->routeIs('timeline') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Arsip Sensor
+                </a>
+
+                <a href="{{ route('factcheck') }}"
+                    class="{{ request()->routeIs('factcheck') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Cek Fakta
+                </a>
+
+                <a href="{{ route('dampak') }}"
+                    class="{{ request()->routeIs('dampak') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Dampak Sosial
+                </a>
+
+                <a href="{{ route('pustaka') }}"
+                    class="{{ request()->routeIs('pustaka') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Pustaka Hak
+                </a>
             </div>
         </div>
     </nav>

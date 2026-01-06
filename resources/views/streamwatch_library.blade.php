@@ -19,13 +19,37 @@
     <nav class="bg-gray-800 border-b border-gray-700 p-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div
+                    class="w-3 h-3 bg-red-500 rounded-full {{ request()->routeIs('dashboard') ? 'animate-pulse' : '' }}">
+                </div>
                 <h1 class="text-xl font-bold tracking-tighter">Stream<span class="text-red-500">Watch</span></h1>
             </div>
-            <div class="space-x-6 text-sm font-medium text-gray-400">
-                <a href="{{ route('dashboard') }}" class="hover:text-white transition">Monitoring Live</a>
-                <a href="{{ route('timeline') }}" class="hover:text-white transition">Arsip Sensor</a>
-                <a href="{{ route('pustaka') }}" class="text-red-400 border-b-2 border-red-500 pb-1">Pustaka</a>
+
+            <div class="space-x-6 text-sm font-medium hidden md:block">
+                <a href="{{ route('dashboard') }}"
+                    class="{{ request()->routeIs('dashboard') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Monitoring Live
+                </a>
+
+                <a href="{{ route('timeline') }}"
+                    class="{{ request()->routeIs('timeline') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Arsip Sensor
+                </a>
+
+                <a href="{{ route('factcheck') }}"
+                    class="{{ request()->routeIs('factcheck') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Cek Fakta
+                </a>
+
+                <a href="{{ route('dampak') }}"
+                    class="{{ request()->routeIs('dampak') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Dampak Sosial
+                </a>
+
+                <a href="{{ route('pustaka') }}"
+                    class="{{ request()->routeIs('pustaka') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
+                    Pustaka Hak
+                </a>
             </div>
         </div>
     </nav>
@@ -86,24 +110,24 @@
                 <div class="p-4">
                     <div class="text-red-400 font-bold text-lg mb-2">Proteksi</div>
                     <p class="text-gray-400">Melindungi diri dari risiko kriminalisasi saat menyampaikan pendapat yang
-                        jujur[cite: 18].</p>
+                        jujur.</p>
                 </div>
                 <div class="p-4">
                     <div class="text-red-400 font-bold text-lg mb-2">Kesehatan Informasi</div>
                     <p class="text-gray-400">Menjaga ekosistem informasi agar tidak memberi justifikasi sensor
-                        pemerintah[cite: 59].</p>
+                        pemerintah.</p>
                 </div>
                 <div class="p-4">
                     <div class="text-red-400 font-bold text-lg mb-2">Pengawasan Publik</div>
                     <p class="text-gray-400">Memastikan institusi tetap transparan dan akuntabel sesuai prinsip
-                        demokrasi[cite: 25].</p>
+                        demokrasi.</p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="mt-16 border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
-        <p>Project Sosial Kewarganegaraan.</p>
+        <p>Project Sosial PKn: Integrasi Keilmuan Informatika dengan SDG 16.</p>
     </footer>
 
 </body>
