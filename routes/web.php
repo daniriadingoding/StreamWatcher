@@ -1,20 +1,56 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $platforms = [
+        [
+            'name' => 'TikTok',
+            'status' => 'RESTRICTED',
+            'color' => 'red',
+            'reports' => 1240,
+            'message' => 'Fitur Live dinonaktifkan di area Jakarta Pusat.',
+            'icon' => 'tiktok'
+        ],
+        [
+            'name' => 'Instagram',
+            'status' => 'WARNING',
+            'color' => 'yellow',
+            'reports' => 850,
+            'message' => 'Koneksi Live tidak stabil, upload story lambat.',
+            'icon' => 'instagram'
+        ],
+        [
+            'name' => 'Shopee Live',
+            'status' => 'SAFE',
+            'color' => 'green',
+            'reports' => 12,
+            'message' => 'Layanan berjalan normal.',
+            'icon' => 'shopee'
+        ],
+    ];
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('streamwatch_dashboard', compact('platforms'));
+})->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/timeline', function () {
+    return view('streamwatch_timeline');
+})->name('timeline');
 
-require __DIR__.'/auth.php';
+Route::get('/lapor', function () {
+    return view('streamwatch_report');
+})->name('lapor');
+
+Route::get('/pustaka', function () {
+    return view('streamwatch_library');
+})->name('pustaka');
+
+Route::get('/fact-check', function () {
+    return view('streamwatch_factcheck');
+})->name('factcheck');
+
+Route::get('/dampak', function () {
+    return view('streamwatch_impact');
+})->name('dampak');
+
+require __DIR__ . '/auth.php';
