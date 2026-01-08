@@ -41,11 +41,6 @@
                     Cek Fakta
                 </a>
 
-                <a href="{{ route('dampak') }}"
-                    class="{{ request()->routeIs('dampak') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
-                    Dampak Sosial
-                </a>
-
                 <a href="{{ route('pustaka') }}"
                     class="{{ request()->routeIs('pustaka') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
                     Pustaka Hak

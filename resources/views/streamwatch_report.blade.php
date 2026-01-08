@@ -41,11 +41,6 @@
                     Cek Fakta
                 </a>
 
-                <a href="{{ route('dampak') }}"
-                    class="{{ request()->routeIs('dampak') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
-                    Dampak Sosial
-                </a>
-
                 <a href="{{ route('pustaka') }}"
                     class="{{ request()->routeIs('pustaka') ? 'text-red-400 border-b-2 border-red-500 pb-1' : 'text-gray-400 hover:text-white transition' }}">
                     Pustaka Hak
@@ -68,9 +63,9 @@
                     <label class="block text-sm font-semibold mb-2">Platform yang Mengalami Sensor</label>
                     <select id="platformSelect" onchange="toggleOtherInput()"
                         class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-red-500 focus:outline-none">
-                        <option value="tiktok">TikTok (Tombol Live Hilang)</option>
-                        <option value="instagram">Instagram (Live Error/Koneksi Diputus)</option>
-                        <option value="shopee">Shopee Live (Fitur Tidak Tersedia)</option>
+                        <option value="tiktok">TikTok</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="shopee">Shopee Live</option>
                         <option value="others">Lainnya (Sebutkan Platform...)</option>
                     </select>
                 </div>
@@ -99,6 +94,11 @@
                             <input type="radio" name="gangguan"
                                 class="text-red-600 focus:ring-red-500 bg-gray-900 border-gray-700">
                             <span>Siaran langsung diputus secara otomatis oleh sistem</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="gangguan"
+                                class="text-red-600 focus:ring-red-500 bg-gray-900 border-gray-700">
+                            <span>Lainnya....</span>
                         </label>
                     </div>
                 </div>
