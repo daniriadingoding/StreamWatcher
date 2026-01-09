@@ -80,8 +80,10 @@
                     </div>
 
                     <div class="mb-6 text-center py-4 bg-gray-900/50 rounded-xl">
-                        <p class="text-5xl font-bold text-{{ $platform['color'] }}-500">
-                            {{ number_format($platform['reports']) }}</p>
+                        <p id="count-{{ $platform['icon'] }}" data-initial="{{ $platform['reports'] }}"
+                            class="text-5xl font-bold text-{{ $platform['color'] }}-500">
+                            {{ number_format($platform['reports']) }}
+                        </p>
                         <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Laporan Gangguan Live</p>
                     </div>
 
@@ -170,7 +172,33 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Daftar platform yang sesuai dengan 'value' di halaman report dan 'icon' di web.php
+            const platforms = ['tiktok', 'instagram', 'shopee'];
 
+            platforms.forEach(platform => {
+                // 1. Cek apakah ada laporan baru tersimpan di browser
+                const storageKey = 'report_count_' + platform;
+                const addedReports = parseInt(localStorage.getItem(storageKey) || 0);
+
+                // 2. Jika ada, tambahkan ke angka yang tampil di layar
+                if (addedReports > 0) {
+                    const element = document.getElementById('count-' + platform);
+                    if (element) {
+                        // Ambil angka awal dari database/kode PHP (via data-initial)
+                        const initialValue = parseInt(element.getAttribute('data-initial'));
+
+                        // Hitung total baru
+                        const newValue = initialValue + addedReports;
+
+                        // Update teks di layar (gunakan toLocaleString agar ada format ribuan misal 1,240)
+                        element.innerText = newValue.toLocaleString();
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

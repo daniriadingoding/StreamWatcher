@@ -56,8 +56,7 @@
                 Bantu kami mendokumentasikan pembatasan akses informasi demi transparansi publik.
             </p>
 
-            <form action="#" method="GET"
-                onsubmit="alert('Laporan Berhasil Terkirim! Data Anda telah ditambahkan ke sistem pemantauan.'); window.location.href = '{{ route('dashboard') }}'; return false;">
+            <form action="#" method="GET" onsubmit="return submitReport()">
 
                 <div class="mb-6">
                     <label class="block text-sm font-semibold mb-2">Platform yang Mengalami Sensor</label>
@@ -142,7 +141,28 @@
             }
         }
     </script>
+    <script>
+        function submitReport() {
+            // 1. Ambil platform yang dipilih user
+            const platform = document.getElementById('platformSelect').value;
 
+            // 2. Cek apakah platform valid (tiktok, instagram, atau shopee)
+            if (['tiktok', 'instagram', 'shopee'].includes(platform)) {
+                // Nama kunci penyimpanan di browser, misal: 'report_count_tiktok'
+                const storageKey = 'report_count_' + platform;
+
+                // Ambil jumlah simpanan lama (kalau tidak ada anggap 0), lalu tambah 1
+                const currentCount = parseInt(localStorage.getItem(storageKey) || 0);
+                localStorage.setItem(storageKey, currentCount + 1);
+            }
+
+            // 3. Tampilkan pesan dan pindah halaman
+            alert('Laporan Berhasil Terkirim! Data Anda telah ditambahkan ke sistem pemantauan.');
+            window.location.href = "{{ route('dashboard') }}";
+
+            return false; // Mencegah form reload halaman biasa
+        }
+    </script>
 </body>
 
 </html>
